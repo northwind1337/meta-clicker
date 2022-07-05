@@ -1,0 +1,28 @@
+{
+  "name": "meta-clicker",
+  "version": "1.0.0",
+  "description": "This application allows you to spend time freely, just by clicking on the button and receive various funny notifications.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northwind1337/meta-clicker.git"
+  },
+  "keywords": [
+    "clicker",
+    "metarhia"
+  ],
+  "author": "Bohdan Vakaliuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/northwind1337/meta-clicker/issues"
+  },
+  "homepage": "https://github.com/northwind1337/meta-clicker#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "html": "^1.0.0",
+    "http": "^0.0.1-security"
+  }
+}
