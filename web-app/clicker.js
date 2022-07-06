@@ -1,12 +1,21 @@
-const metaButton = document.querySelector(".metaButton");
-metaButton.onclick = clicksCounter;
-const metaClicks = document.querySelector(".metaClicks");
-metaClicks.id = document.querySelector(".metaClicks");
+import { startTimer } from "./timer.js";
 
-let metaClicksInitial = 0;
+let clicksCounter = 0;
 
-async function clicksCounter() {
-  metaClicksInitial += 1;
-  metaClicks.innerHTML = metaClicksInitial;
+function initializeClicker() {
+  const metaButton = document.querySelector(".meta-clicker__button");
+
+  metaButton.onclick = increaseClicksCounter;
 }
 
+function increaseClicksCounter() {
+  const metaClicks = document.querySelector("#meta-сlicker__clicks-counter");
+  if (clicksCounter === 0) {
+    startTimer();
+  }
+
+  clicksCounter += 1;
+  metaClicks.innerHTML = clicksCounter;
+}
+
+export { initializeClicker };

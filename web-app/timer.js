@@ -1,24 +1,47 @@
-const metaTimer = document.querySelector(".metaTimer");
-let timeSecond = 60;
-const endTimeMessage = "Time is up";
+const metaTimer = document.querySelector(".meta-timer");
 
-displayTime(timeSecond);
+const END_TIME_MESSAGE = "Time is up";
 
-const countDown = setInterval(async () => {
-  timeSecond--;
-  await displayTime(timeSecond);
-  if (timeSecond <= 0 || timeSecond < 1) {
-    await endTime();
-    clearInterval(countDown);
-  }
-}, 1000);
+let timeRemaining = 60;
 
-async function displayTime(second) {
-  const minutes = Math.floor(second / 60);
-  const seconds = Math.floor(second % 60);
-  metaTimer.innerHTML = `${minutes}:${seconds}`;
+function initializeTimer() {
+  updateTimer(timeRemaining);
 }
 
-async function endTime() {
-  metaTimer.innerHTML = endTimeMessage;
+function updateTimer(time) {
+  const { minutes, seconds } = calculateTime(time);
+
+  showMessage(`${minutes}:${seconds}`);
 }
+
+function startTimer() {
+  setInterval(() => {
+    const time = decreaseTime(timeRemaining)
+    timeRemaining = time
+    updateTimer(time);
+
+    if (timeRemaining === 0) {
+      showMessage(END_TIME_MESSAGE);
+      clearInterval(startTimer);
+    }
+  }, 1000);
+}
+
+function decreaseTime(time) {
+  return time - 1;
+}
+
+function calculateTime(remainingSeconds) {
+  const SECONDS_PER_MINUTE = 60;
+
+  const minutes = Math.floor(remainingSeconds / SECONDS_PER_MINUTE);
+  const seconds = Math.floor(remainingSeconds % SECONDS_PER_MINUTE);
+
+  return { minutes, seconds };
+}
+
+function showMessage(message) {
+  metaTimer.innerHTML = message;
+}
+
+export { startTimer, initializeTimer };

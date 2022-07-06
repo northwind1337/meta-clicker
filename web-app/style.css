@@ -1,25 +1,28 @@
-html{
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+
+html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 100%;
     box-sizing: border-box;
 }
 
-*, *::before, *::after{
-    box-sizing: inherit;
-}
-
-body{
+body {
     margin: 0;
     padding: 0;
 }
 
-.metaClicker{
+.meta-clicker {
     font-size: 30px;
     display: grid;
     place-items: center;
     margin-top: 20%;
 }
 
-.metaTimer{
+.meta-timer {
     font-size: 30px;
 }
