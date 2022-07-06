@@ -2,7 +2,7 @@ const metaTimer = document.querySelector(".meta-timer");
 
 const END_TIME_MESSAGE = "Time is up";
 
-let timeRemaining = 60;
+let timeRemaining = 5;
 
 function initializeTimer() {
   updateTimer(timeRemaining);
@@ -15,14 +15,14 @@ function updateTimer(time) {
 }
 
 function startTimer() {
-  setInterval(() => {
+ const timerId = setInterval(() => {
     const time = decreaseTime(timeRemaining)
     timeRemaining = time
     updateTimer(time);
 
     if (timeRemaining === 0) {
       showMessage(END_TIME_MESSAGE);
-      clearInterval(startTimer);
+      clearInterval(timerId);
     }
   }, 1000);
 }
